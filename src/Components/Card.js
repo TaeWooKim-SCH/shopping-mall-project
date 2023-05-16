@@ -26,17 +26,17 @@ export default function Card({data, bookmark_true}) {
     }
 
     return window.location.reload();
-  }
+  };
 
   const modalClickHandler = () => {
-    setModal(true)
-  }
+    setModal(true);
+  };
   
   switch (data.type) {
     case "Product":
       return (
         <>
-          <section className="w-264 h-264 relative">
+          <section className="w-264 h-264 relative mt-4">
             <img className="w-264 h-52 rounded-xl cursor-pointer" src={data.image_url} alt={data.id} onClick={modalClickHandler}></img>
             <section className='flex justify-between mt-1'>
               <div className="font-bold cursor-pointer" onClick={modalClickHandler}>{data.title}</div>
@@ -48,13 +48,15 @@ export default function Card({data, bookmark_true}) {
             {mark ? <img className="absolute top-40 right-4 cursor-pointer" src={StarOn} alt="북마크" onClick={markHandler}></img> : 
             <img className="absolute top-40 right-4 cursor-pointer" src={StarOff} alt="북마크" onClick={markHandler}></img>}
           </section>
-          <Modal imgUrl={data.image_url} title={data.title} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          {modal && 
+            <Modal imgUrl={data.image_url} title={data.title} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          }
         </>
       );
     case "Category":
       return (
         <>
-          <section className="w-264 h-264 relative">
+          <section className="w-264 h-264 relative mt-4">
             <img className="w-264 h-52 rounded-xl cursor-pointer" src={data.image_url} alt={data.id} onClick={modalClickHandler}></img>
             <section className='mt-1'>
               <div className="font-bold cursor-pointer" onClick={modalClickHandler}>#{data.title}</div>
@@ -62,28 +64,32 @@ export default function Card({data, bookmark_true}) {
             {mark ? <img className="absolute top-40 right-4 cursor-pointer" src={StarOn} alt="북마크" onClick={markHandler}></img> : 
             <img className="absolute top-40 right-4 cursor-pointer" src={StarOff} alt="북마크" onClick={markHandler}></img>}
           </section>
-          <Modal imgUrl={data.image_url} title={`#${data.title}`} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          {modal && 
+            <Modal imgUrl={data.image_url} title={`#${data.title}`} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          }
         </>
       );
     case "Exhibition":
       return (
         <>
-          <section className="w-264 h-264 relative">
+          <section className="w-264 h-264 relative mt-4">
             <img className="w-264 h-52 rounded-xl cursor-pointer" src={data.image_url} alt={data.id} onClick={modalClickHandler}></img>
             <section className='mt-1 mt-1'>
               <div className="font-bold cursor-pointer" onClick={modalClickHandler}>{data.sub_title}</div>
-              <div className="font-semibold">{data.title}</div>
+              <div>{data.title}</div>
             </section>
             {mark ? <img className="absolute top-40 right-4 cursor-pointer" src={StarOn} alt="북마크" onClick={markHandler}></img> : 
             <img className="absolute top-40 right-4 cursor-pointer" src={StarOff} alt="북마크" onClick={markHandler}></img>}
           </section>
-          <Modal imgUrl={data.image_url} title={data.sub_title} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          {modal && 
+            <Modal imgUrl={data.image_url} title={data.sub_title} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          }
         </>
       );
     case "Brand":
       return (
         <>
-          <section className="w-264 h-264 relative">
+          <section className="w-264 h-264 relative mt-4">
             <img className="w-264 h-52 rounded-xl cursor-pointer" src={data.brand_image_url} alt="product" onClick={modalClickHandler}></img>
             <section className='flex justify-between mt-1'>
               <div className="font-bold cursor-pointer" onClick={modalClickHandler}>{data.brand_name}</div>
@@ -95,7 +101,9 @@ export default function Card({data, bookmark_true}) {
             {mark ? <img className="absolute top-40 right-4 cursor-pointer" src={StarOn} alt="북마크" onClick={markHandler}></img> : 
             <img className="absolute top-40 right-4 cursor-pointer" src={StarOff} alt="북마크" onClick={markHandler}></img>}
           </section>
-          <Modal imgUrl={data.brand_image_url} title={data.brand_name} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          {modal &&
+            <Modal imgUrl={data.brand_image_url} title={data.brand_name} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          }
         </>
       );
     default:
