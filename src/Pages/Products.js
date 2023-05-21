@@ -46,7 +46,7 @@ export default function Products() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     }
-  }, [page, filter])
+  }, [page, filter]);
 
   useEffect(() => {
     if (isLoading) return;

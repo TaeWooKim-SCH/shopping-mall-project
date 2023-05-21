@@ -82,6 +82,9 @@ export default function Card({data, bookmark_true}) {
           {modal && 
             <Modal imgUrl={data.image_url} title={`#${data.title}`} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
           }
+          {toastMessage && 
+            <Toast toastMessage={toastMessage}/>
+          }
         </>
       );
     case "Exhibition":
@@ -98,6 +101,9 @@ export default function Card({data, bookmark_true}) {
           </section>
           {modal && 
             <Modal imgUrl={data.image_url} title={data.sub_title} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          }
+          {toastMessage && 
+            <Toast toastMessage={toastMessage}/>
           }
         </>
       );
@@ -118,6 +124,9 @@ export default function Card({data, bookmark_true}) {
           </section>
           {modal &&
             <Modal imgUrl={data.brand_image_url} title={data.brand_name} modal={modal} setModal={setModal} mark={mark} setMark={setMark} data={data}/>
+          }
+          {toastMessage && 
+            <Toast toastMessage={toastMessage}/>
           }
         </>
       );
